@@ -8,10 +8,11 @@
 		<version>3.1.0</version>
 		<relativePath/>
 	</parent>
+
 	<groupId>com.spring.microservices</groupId>
 	<artifactId>twitter-data-streaming</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>twitter-data-streaming</name>
+	<name>Twitter Data Streaming - Parent</name>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<description>Twitter Data Streaming Demo - Spring Microservices</description>
 
@@ -19,7 +20,13 @@
 		<java.version>17</java.version>
 		<spring-boot.version>3.1.0</spring-boot.version>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<twitter4j.version>4.0.7</twitter4j.version>
+		<lombok.version>1.18.28</lombok.version>
 	</properties>
+
+	<modules>
+		<module>twitter-to-kafka-service</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -27,6 +34,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter</artifactId>
 				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.twitter4j</groupId>
+				<artifactId>twitter4j-stream</artifactId>
+				<version>${twitter4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -55,7 +73,6 @@
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring-boot.version}</version>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 	</build>
