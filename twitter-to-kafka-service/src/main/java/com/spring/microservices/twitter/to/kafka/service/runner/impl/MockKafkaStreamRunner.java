@@ -1,6 +1,6 @@
 package com.spring.microservices.twitter.to.kafka.service.runner.impl;
 
-import com.spring.microservices.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import com.spring.microservices.config.TwitterToKafkaServiceConfigData;
 import com.spring.microservices.twitter.to.kafka.service.exception.TwitterToKafkaServiceException;
 import com.spring.microservices.twitter.to.kafka.service.listener.TwitterKafkaStatusListener;
 import com.spring.microservices.twitter.to.kafka.service.runner.StreamRunner;
@@ -62,7 +62,8 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final TwitterKafkaStatusListener twitterKafkaStatusListener;
 
-    public MockKafkaStreamRunner(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData, TwitterKafkaStatusListener twitterKafkaStatusListener) {
+    public MockKafkaStreamRunner(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData,
+                                 TwitterKafkaStatusListener twitterKafkaStatusListener) {
         this.twitterToKafkaServiceConfigData = twitterToKafkaServiceConfigData;
         this.twitterKafkaStatusListener = twitterKafkaStatusListener;
     }

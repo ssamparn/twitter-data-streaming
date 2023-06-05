@@ -9,7 +9,7 @@
 
     <groupId>com.spring.microservices</groupId>
     <artifactId>twitter-to-kafka-service</artifactId>
-    <name>Twitter to Kafka Service</name>
+    <name>Twitter to Kafka - Service</name>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
@@ -35,6 +35,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>app-config-data</artifactId>
         </dependency>
     </dependencies>
 

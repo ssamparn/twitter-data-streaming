@@ -26,7 +26,8 @@
 
 	<modules>
 		<module>twitter-to-kafka-service</module>
-	</modules>
+        <module>app-config-data</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -51,6 +52,11 @@
 				<artifactId>spring-boot-starter-test</artifactId>
 				<version>${spring-boot.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.spring.microservices</groupId>
+				<artifactId>app-config-data</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
