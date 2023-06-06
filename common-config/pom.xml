@@ -5,13 +5,12 @@
         <groupId>com.spring.microservices</groupId>
         <artifactId>twitter-data-streaming</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>app-config-data</artifactId>
-    <name>Twitter Application - Config Data</name>
-    <version>1.0.0</version>
+    <artifactId>common-config</artifactId>
     <packaging>jar</packaging>
+
+    <name>Common - Configurations</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,13 +18,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>app-config-data</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 
