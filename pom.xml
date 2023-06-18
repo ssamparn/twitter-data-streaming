@@ -26,6 +26,8 @@
 		<spring-kafka.version>3.0.7</spring-kafka.version>
 		<spring-retry.version>2.0.1</spring-retry.version>
 		<kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
+		<spring-cloud.version>4.0.3</spring-cloud.version>
+		<spring-cloud-dependencies.version>2022.0.3</spring-cloud-dependencies.version>
 	</properties>
 
 	<modules>
@@ -33,7 +35,8 @@
         <module>app-config-data</module>
 		<module>kafka</module>
 		<module>common-config</module>
-	</modules>
+        <module>config-server</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -67,6 +70,16 @@
 				<groupId>org.springframework.retry</groupId>
 				<artifactId>spring-retry</artifactId>
 				<version>${spring-retry.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-config-server</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-config</artifactId>
+				<version>${spring-cloud.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -109,6 +122,13 @@
 				<groupId>com.spring.microservices</groupId>
 				<artifactId>kafka-producer</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
