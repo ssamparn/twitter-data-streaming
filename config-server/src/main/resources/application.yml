@@ -8,17 +8,20 @@ spring:
     config:
       server:
         git:
-#          uri: file://Users/sashankasamantray/my_projects/backend/spring-microservices/twitter-data-streaming/config-server-repository
+          # uri: file://Users/sashankasamantray/my_projects/backend/spring-microservices/twitter-data-streaming/config-server-repository
           uri: https://github.com/ssamparn/config-repo
           default-label: master
           username: ssamparn
-          password: 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
+          password: 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
           clone-on-start: true
       fail-fast: true
   security:
     user:
       name: spring_cloud_user
-      password: springCloud_Pwd!
+#      password: springCloud_Pwd!
+      password: '{cipher}d2e7dec0129f1259cdf1b440b1acef88d6b221b50d722d1cec72cb34c44ae6e711b8c556ef86abebcb2503d1bf37f7c2'
+encrypt:
+  key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
 
 logging:
   level:
