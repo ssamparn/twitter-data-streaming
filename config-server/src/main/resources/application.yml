@@ -12,7 +12,7 @@ spring:
           uri: https://github.com/ssamparn/config-repo
           default-label: master
           username: ssamparn
-          password: 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
+          password: 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
           clone-on-start: true
       fail-fast: true
   security:
