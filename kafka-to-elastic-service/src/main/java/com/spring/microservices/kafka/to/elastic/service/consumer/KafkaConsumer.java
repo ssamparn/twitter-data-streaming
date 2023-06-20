@@ -1,6 +1,5 @@
-package com.microservices.demo.kafka.to.elastic.service.consumer;
+package com.spring.microservices.kafka.to.elastic.service.consumer;
 
-import com.microservices.demo.kafka.avro.model.TwitterAvroModel;
 import org.apache.avro.specific.SpecificRecordBase;
 
 import java.io.Serializable;

@@ -10,8 +10,7 @@
     <artifactId>kafka-consumer</artifactId>
     <packaging>jar</packaging>
 
-    <name>kafka-consumer</name>
-    <url>http://maven.apache.org</url>
+    <name>Kafka - Consumer</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,10 +18,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>app-config-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
         </dependency>
     </dependencies>
 </project>
