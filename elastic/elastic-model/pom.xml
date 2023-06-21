@@ -1,27 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.spring.microservices</groupId>
-        <artifactId>twitter-data-streaming</artifactId>
+        <artifactId>elastic</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>kafka</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>elastic-model</artifactId>
+    <packaging>jar</packaging>
 
-    <name>Kafka - Parent</name>
+    <name>Elastic - Model</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <modules>
-        <module>kafka-admin</module>
-        <module>kafka-model</module>
-        <module>kafka-producer</module>
-        <module>kafka-consumer</module>
-    </modules>
-
+    <dependencies>
+    </dependencies>
 </project>
