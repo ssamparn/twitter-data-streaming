@@ -1,6 +1,8 @@
 spring:
   application:
     name: kafka-to-elastic-service
+  main:
+    allow-bean-definition-overriding: false
   profiles:
     active: kafka_to_elastic
   config:
