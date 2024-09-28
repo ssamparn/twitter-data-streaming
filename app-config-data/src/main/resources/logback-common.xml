@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <included>
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
@@ -22,12 +21,11 @@
             <fileNamePattern>${DEV_HOME}/archived/${APP_NAME}-log.%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFileNamingAndTriggeringPolicy">
                 <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
-
 
     <logger name="com.spring.microservices" level="info" additivity="false">
         <appender-ref ref="FILE"/>
