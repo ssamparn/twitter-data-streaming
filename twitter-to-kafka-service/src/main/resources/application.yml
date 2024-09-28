@@ -10,8 +10,12 @@ spring:
       name: twitter-to-kafka-service,config-client
       uri: http://localhost:8888
       username: spring_cloud_user
-      password: springCloud_Pwd!
+#      password: springCloud_Pwd!
+      password: '{cipher}7a0d735158a760bab4ffb791ca55f52df9aa3a2b27b8411e968264d7726cc7597ea9ff5a57dae90fd68c9c09ba6a6970'
       allow-override: true
+
+encrypt:
+  key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
 
 #----------------------------------------------------------------------------------------------------------------------
 # Uncomment below config properties to build locally. Otherwise, start local config server before building the project.
