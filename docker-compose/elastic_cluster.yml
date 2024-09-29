@@ -1,69 +1,30 @@
-version: '3.7'
-
 services:
-  elastic-1:
+  elastic-search:
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}
-    hostname: elastic-1
-    environment:
-      - node.name=elastic-1
-      - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-2,elastic-3
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data01:/usr/share/elasticsearch/data
+    hostname: elastic-search
+    container_name: elastic-search
     ports:
-      - 9200:9200
-    networks:
-      - ${GLOBAL_NETWORK:-elastic}
-
-  elastic-2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    hostname: elastic-2
+      - '9200:9200'
     environment:
-      - node.name=elastic-2
+      - node.name=elastic-search
+      - discovery.type=single-node
       - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-1,elastic-3
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+      - 'xpack.security.enabled=false'
+    mem_limit: ${ES_MEM_LIMIT}
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - data02:/usr/share/elasticsearch/data
-    networks:
-      - ${GLOBAL_NETWORK:-elastic}
-
-  elastic-3:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    hostname: elastic-3
-    environment:
-      - node.name=elastic-3
-      - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-1,elastic-2
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data03:/usr/share/elasticsearch/data
+      - data:/usr/share/elasticsearch/data
     networks:
       - ${GLOBAL_NETWORK:-elastic}
 
 volumes:
-  data01:
+  data:
     driver: local
-  data02:
-    driver: local
-  data03:
-    driver: local
+
+networks:
+  ${GLOBAL_NETWORK}:
