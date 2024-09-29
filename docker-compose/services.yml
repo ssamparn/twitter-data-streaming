@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   twitter-to-kafka-service:
     image: ${GROUP_ID}/twitter.to.kafka.service:${SERVICE_VERSION:-latest}
@@ -21,16 +19,20 @@ services:
       - "KAFKA-CONFIG_SCHEMA-REGISTRY-URL=http://schema-registry:8081"
       - "TWITTER-TO-KAFKA-SERVICE_ENABLE-MOCK-TWEETS=true"
       - "SPRING_CLOUD_CONFIG_URI=http://config-server:8888"
+      - "ENCRYPT_KEY=APODNU3093r2rbjzxcn09u213asdhy08WRFH"
     networks:
       - ${GLOBAL_NETWORK:-services}
 
   config-server:
     image: ${GROUP_ID}/config.server:${SERVICE_VERSION:-latest}
     ports:
-      - "5006:5006"
+      - "5007:5007"
+      - "8888:8888"
     volumes:
       - "./docker-logs:/workspace/config-server/logs"
     environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx256m"
+      - "ENCRYPT_KEY=APODNU3093r2rbjzxcn09u213asdhy08WRFH"
+      - "SERVER_PORT=8888"
     networks:
       - ${GLOBAL_NETWORK:-services}

@@ -8,8 +8,8 @@ spring:
     config:
       server:
         git:
-#          uri: file://Users/sashankasamantray/my_projects/backend/spring-microservices/twitter-data-streaming/config-server-repository
-          uri: https://github.com/ssamparn/config-repo
+          uri: file://Users/sashankasamantray/my_projects/backend/spring-microservices/twitter-data-streaming/config-server-repository
+#          uri: https://github.com/ssamparn/config-repo
           default-label: master
           username: ssamparn
           password: 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
