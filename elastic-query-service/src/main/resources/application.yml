@@ -1,5 +1,7 @@
 server:
   port: 8183
+  servlet:
+    context-path: /elastic-query-service
 
 spring:
   application:
@@ -24,6 +26,9 @@ logging:
   level:
     ROOT: INFO
     com.spring.microservices: INFO
+
+security:
+  paths-to-ignore: /api-docs, /actuator/**, /**
 
 #----------------------------------------------------------------------------------------------------------------------
 # Uncomment below config properties to build locally. Otherwise, start local config server before building the project.
@@ -93,3 +98,10 @@ elastic-config:
   connect-timeout-ms: 5000
   socket-timeout-ms: 30000
   is-repository: false
+
+elastic-query-service:
+  version: v1
+
+elastic-query-config:
+  text-field: text
+  is-repository: true

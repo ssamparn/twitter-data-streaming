@@ -37,7 +37,7 @@ public class TwitterElasticRepositoryQueryClient implements ElasticQueryClient<T
     }
 
     @Override
-    public List<TwitterIndexModel> getIndexModelByTest(String text) {
+    public List<TwitterIndexModel> getIndexModelByText(String text) {
         List<TwitterIndexModel> twitterIndexModels = twitterElasticsearchQueryRepository.findByText(text);
         LOG.info("{} number of documents with text {} retrieved successfully", twitterIndexModels.size(), text);
         return twitterIndexModels;

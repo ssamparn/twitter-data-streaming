@@ -57,7 +57,7 @@ public class TwitterElasticQueryClient implements ElasticQueryClient<TwitterInde
     }
 
     @Override
-    public List<TwitterIndexModel> getIndexModelByTest(String text) {
+    public List<TwitterIndexModel> getIndexModelByText(String text) {
         Query searchQueryByFieldText = elasticQueryUtil.getSearchQueryByFieldText(elasticQueryConfigData.getTextField(), text);
         SearchHits<TwitterIndexModel> twitterIndexModelSearchHit = elasticsearchOperations.search(searchQueryByFieldText, TwitterIndexModel.class, IndexCoordinates.of(elasticConfigData.getIndexName()));
         LOG.info("{} number of documents with text {} retrieved successfully", twitterIndexModelSearchHit.getTotalHits(), text);
