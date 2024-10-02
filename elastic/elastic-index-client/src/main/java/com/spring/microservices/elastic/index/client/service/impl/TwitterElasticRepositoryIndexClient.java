@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /* *
- * An alternative version of TwitterElasticIndexClient
+ * An alternative implementation of ElasticIndexClient
  * */
 @Service
 @ConditionalOnProperty(name = "elastic-config.is-repository", havingValue = "true", matchIfMissing = true)

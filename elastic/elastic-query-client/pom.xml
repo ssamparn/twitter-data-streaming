@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.spring.microservices</groupId>
+        <artifactId>elastic</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>elastic-query-client</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Elastic - Query Client</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!--LOCAL-->
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>app-config-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>elastic-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>elastic-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>common-util</artifactId>
+        </dependency>
+    </dependencies>
+</project>
