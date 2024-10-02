@@ -27,6 +27,12 @@ logging:
     ROOT: INFO
     com.spring.microservices: INFO
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
 security:
   paths-to-ignore: /api-docs, /actuator/**, /**
 
