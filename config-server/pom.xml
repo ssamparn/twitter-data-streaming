@@ -9,7 +9,7 @@
 
     <artifactId>config-server</artifactId>
 
-    <name>Config Server</name>
+    <name>Application - Config Server</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

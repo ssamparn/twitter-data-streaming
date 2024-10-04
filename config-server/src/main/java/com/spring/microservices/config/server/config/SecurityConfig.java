@@ -15,9 +15,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authz) -> authz
+                .authorizeHttpRequests(requests -> requests
                     .requestMatchers(
                             "/config-client/twitter_to_kafka",
+                            "/config-client/kafka_to_elastic",
+                            "/config-client/elastic_query",
+                            "/config-client/elastic_query_web",
                             "/actuator/**",
                             "/encrypt/**",
                             "/decrypt/**")

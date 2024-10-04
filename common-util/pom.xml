@@ -10,6 +10,6 @@
     <artifactId>common-util</artifactId>
     <packaging>jar</packaging>
 
-    <name>Common - Util</name>
+    <name>Application - Common Util</name>
 
 </project>

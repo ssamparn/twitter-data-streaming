@@ -10,7 +10,7 @@
     <artifactId>common-config</artifactId>
     <packaging>jar</packaging>
 
-    <name>Common - Configurations</name>
+    <name>Application - Config Common</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -11,7 +11,7 @@
     <artifactId>kafka</artifactId>
     <packaging>pom</packaging>
 
-    <name>Kafka - Parent</name>
+    <name>Kafka - Parent Module</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

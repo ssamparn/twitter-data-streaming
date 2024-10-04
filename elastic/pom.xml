@@ -10,7 +10,7 @@
     <artifactId>elastic</artifactId>
     <packaging>pom</packaging>
 
-    <name>Elastic - Parent</name>
+    <name>Elastic - Parent Module</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

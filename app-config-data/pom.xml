@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>app-config-data</artifactId>
-    <name>Twitter Application - Config Data</name>
+    <name>Application - Config Data</name>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
