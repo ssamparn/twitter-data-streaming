@@ -7,15 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 @Component
-public class KafkaStreamInitializer implements StreamInitializer {
+public class TwitterStreamInitializer implements StreamInitializer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(KafkaStreamInitializer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TwitterStreamInitializer.class);
 
     private final KafkaConfigData kafkaConfigData;
 
     private final KafkaAdminClient kafkaAdminClient;
 
-    public KafkaStreamInitializer(KafkaConfigData configData, KafkaAdminClient adminClient) {
+    public TwitterStreamInitializer(KafkaConfigData configData, KafkaAdminClient adminClient) {
         this.kafkaConfigData = configData;
         this.kafkaAdminClient = adminClient;
     }
