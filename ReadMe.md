@@ -1,15 +1,24 @@
-#### Run Kafka Cluster
+### Twitter Events Streaming 
 
+#### Run Kafka Cluster
 - From the root directory
 ```bash
 $ cd docker-compose
 $ docker compose -f common.yml -f kafka_cluster.yml up
-$ docker compose -f common.yml -f elastic_cluster.yml up
-$ docker compose -f common.yml -f keycloak_authorization_server.yml up
 ```
 
-- Launch Keycloak Authorizaton Server Admin Console
+#### Run Elastic Cluster
+- From the root directory
+```bash
+$ cd docker-compose
+$ docker compose -f common.yml -f elastic_cluster.yml up
+```
 
+
+| App                           | Port                  | Username   | Password   |
+|-------------------------------|-----------------------|------------|------------|
+| Prometheus                    | http://localhost:9090 |            |            |
+| Grafana                       | http://localhost:3000 | `admin`    | `grafana`  |
 
 - Inspect running containers
 ```bash
