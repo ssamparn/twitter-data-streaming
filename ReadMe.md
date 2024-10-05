@@ -5,7 +5,11 @@
 $ cd docker-compose
 $ docker compose -f common.yml -f kafka_cluster.yml up
 $ docker compose -f common.yml -f elastic_cluster.yml up
+$ docker compose -f common.yml -f keycloak_authorization_server.yml up
 ```
+
+- Launch Keycloak Authorizaton Server Admin Console
+
 
 - Inspect running containers
 ```bash
