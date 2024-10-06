@@ -1,6 +1,7 @@
 package com.spring.microservices.elastic.query.service.web.controller;
 
 import com.spring.microservices.elastic.query.service.business.ElasticQueryService;
+import com.spring.microservices.elastic.query.service.model.ElasticQueryServiceAnalyticsResponseModel;
 import com.spring.microservices.elastic.query.service.model.ElasticQueryServiceRequestModel;
 import com.spring.microservices.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import io.swagger.v3.oas.annotations.Operation;
@@ -93,5 +94,25 @@ public class ElasticDocumentRestController {
 
         LOG.info("Elasticsearch returned {} of documents on port {}", elasticQueryServiceResponseModel, port);
         return new ResponseEntity<>(elasticQueryServiceResponseModel, HttpStatus.OK);
+    }
+
+    @Operation(summary = "Get elastic document by text with analytics.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful response.", content = {
+                    @Content(mediaType = "application/vnd.api.v1+json",
+                            schema = @Schema(implementation = ElasticQueryServiceAnalyticsResponseModel.class)
+                    )
+            }),
+            @ApiResponse(responseCode = "400", description = "Not found."),
+            @ApiResponse(responseCode = "500", description = "Internal server error.")
+    })
+    @PostMapping("/get-document-by-text-with-analytics")
+    public @ResponseBody
+    ResponseEntity<ElasticQueryServiceAnalyticsResponseModel> getDocumentByTextWithAnalytics(@RequestBody @Valid ElasticQueryServiceRequestModel elasticQueryServiceRequestModel) {
+        ElasticQueryServiceAnalyticsResponseModel elasticQueryServiceAnalyticsResponseModel = elasticQueryService.getDocumentByTextWithAnalytics(elasticQueryServiceRequestModel.getText());
+
+        LOG.info("Elasticsearch returned {} of documents on port {}", elasticQueryServiceAnalyticsResponseModel, port);
+
+        return new ResponseEntity<>(elasticQueryServiceAnalyticsResponseModel, HttpStatus.OK);
     }
 }

@@ -2,6 +2,7 @@ package com.spring.microservices.elastic.query.web.client.service.impl;
 
 import com.spring.microservices.config.ElasticQueryWebClientConfigData;
 import com.spring.microservices.elastic.query.web.client.exception.ElasticQueryWebClientException;
+import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientAnalyticsResponseModel;
 import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
 import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
 import com.spring.microservices.elastic.query.web.client.service.ElasticQueryWebClient;
@@ -37,16 +38,24 @@ public class TwitterElasticQueryWebClient implements ElasticQueryWebClient {
     @Override
     public List<ElasticQueryWebClientResponseModel> getDataByText(ElasticQueryWebClientRequestModel requestModel) {
         LOG.info("Querying by text {}", requestModel.getText());
-        return getWebClient(requestModel)
+        return getWebClient(elasticQueryWebClientConfigData.getQueryByText().getUri() ,requestModel)
                 .bodyToFlux(ElasticQueryWebClientResponseModel.class)
                 .collectList()
                 .block();
     }
 
-    private WebClient.ResponseSpec getWebClient(ElasticQueryWebClientRequestModel requestModel) {
+    @Override
+    public ElasticQueryWebClientAnalyticsResponseModel getDataByTextWithAnalytics(ElasticQueryWebClientRequestModel requestModel) {
+        LOG.info("Querying by text {}", requestModel.getText());
+        return getWebClient(elasticQueryWebClientConfigData.getQueryByTextWithAnalytics().getUri(), requestModel)
+                .bodyToMono(ElasticQueryWebClientAnalyticsResponseModel.class)
+                .block();
+    }
+
+    private WebClient.ResponseSpec getWebClient(String uri, ElasticQueryWebClientRequestModel requestModel) {
         return webClientBuilder.build()
                 .method(HttpMethod.valueOf(elasticQueryWebClientConfigData.getQueryByText().getMethod()))
-                .uri(elasticQueryWebClientConfigData.getQueryByText().getUri())
+                .uri(uri)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromPublisher(Mono.just(requestModel), createParameterizedTypeReference()))
                 .retrieve()

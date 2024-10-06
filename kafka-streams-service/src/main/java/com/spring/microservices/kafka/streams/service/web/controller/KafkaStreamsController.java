@@ -34,7 +34,7 @@ public class KafkaStreamsController {
     @Operation(summary = "Get word count by word.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success.", content = {
-                    @Content(mediaType = "application/vnd.api.v1+json",
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = KafkaStreamsResponseModel.class))
             }),
             @ApiResponse(responseCode = "400", description = "Not found."),

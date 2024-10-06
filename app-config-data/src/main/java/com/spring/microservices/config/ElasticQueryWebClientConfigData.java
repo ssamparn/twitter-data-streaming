@@ -13,6 +13,7 @@ public class ElasticQueryWebClientConfigData {
 
     private WebClient webClient;
     private Query queryByText;
+    private Query queryByTextWithAnalytics;
 
     @Data
     public static class WebClient {

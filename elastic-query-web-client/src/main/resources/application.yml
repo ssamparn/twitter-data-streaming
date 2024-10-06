@@ -46,3 +46,6 @@ elastic-query-web-client:
   query-by-text:
     method: POST
     uri: '/get-document-by-text'
+  query-by-text-with-analytics:
+    method: POST
+    uri: '/get-document-by-text-with-analytics'

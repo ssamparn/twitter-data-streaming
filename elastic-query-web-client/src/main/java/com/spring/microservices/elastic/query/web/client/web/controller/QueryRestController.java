@@ -1,5 +1,6 @@
 package com.spring.microservices.elastic.query.web.client.web.controller;
 
+import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientAnalyticsResponseModel;
 import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
 import com.spring.microservices.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
 import com.spring.microservices.elastic.query.web.client.service.ElasticQueryWebClient;
@@ -32,5 +33,14 @@ public class QueryRestController {
         List<ElasticQueryWebClientResponseModel> responseModels = elasticQueryWebClient.getDataByText(elasticQueryWebClientRequestModel);
 
         return new ResponseEntity<>(responseModels, HttpStatus.OK);
+    }
+
+    @PostMapping("/query-by-text-with-analytics")
+    public ResponseEntity<ElasticQueryWebClientAnalyticsResponseModel> queryByTextWithAnalytics(@Valid @RequestBody ElasticQueryWebClientRequestModel elasticQueryWebClientRequestModel) {
+        LOG.info("Querying with text {}", elasticQueryWebClientRequestModel.getText());
+
+        ElasticQueryWebClientAnalyticsResponseModel responseModel = elasticQueryWebClient.getDataByTextWithAnalytics(elasticQueryWebClientRequestModel);
+
+        return new ResponseEntity<>(responseModel, HttpStatus.OK);
     }
 }
