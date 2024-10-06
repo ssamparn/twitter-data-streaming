@@ -22,9 +22,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 @ConditionalOnProperty(name = "twitter-to-kafka-service.enable-mock-tweets", havingValue = "true")
-public class MockKafkaStreamRunner implements StreamRunner {
+public class MockTwitterStreamRunner implements StreamRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MockKafkaStreamRunner.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MockTwitterStreamRunner.class);
     private static final Random RANDOM = new Random();
     private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM dd HH:mm:ss zzz yyyy";
     private static final String[] WORDS = new String[] {
@@ -62,8 +62,8 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final TwitterKafkaStatusListener twitterKafkaStatusListener;
 
-    public MockKafkaStreamRunner(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData,
-                                 TwitterKafkaStatusListener twitterKafkaStatusListener) {
+    public MockTwitterStreamRunner(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData,
+                                   TwitterKafkaStatusListener twitterKafkaStatusListener) {
         this.twitterToKafkaServiceConfigData = twitterToKafkaServiceConfigData;
         this.twitterKafkaStatusListener = twitterKafkaStatusListener;
     }
