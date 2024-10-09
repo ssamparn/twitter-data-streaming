@@ -35,3 +35,4 @@ build/
 
 ### Logs ###
 docker-compose/docker-logs
+docker-compose/data

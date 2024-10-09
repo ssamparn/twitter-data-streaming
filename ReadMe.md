@@ -14,11 +14,18 @@ $ cd docker-compose
 $ docker compose -f common.yml -f elastic_cluster.yml up
 ```
 
+#### Run Postgresql Database
+- From the root directory
+```bash
+$ cd docker-compose
+$ docker compose -f common.yml -f postgresql.yml up
+```
 
-| App                           | Port                  | Username   | Password   |
-|-------------------------------|-----------------------|------------|------------|
-| Prometheus                    | http://localhost:9090 |            |            |
-| Grafana                       | http://localhost:3000 | `admin`    | `grafana`  |
+| App           | Port                  | Username   | Password     |
+|---------------|-----------------------|------------|--------------|
+| Prometheus    | http://localhost:9090 |            |              |
+| Grafana       | http://localhost:3000 | `admin`    | `grafana`    |
+| Postgresql    | http://localhost:5432 | `postgres` | `password`   |
 
 - Inspect running containers
 ```bash

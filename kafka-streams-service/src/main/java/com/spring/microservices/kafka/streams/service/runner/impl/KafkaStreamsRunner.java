@@ -115,6 +115,7 @@ public class KafkaStreamsRunner implements StreamsRunner<String, Long> {
                 .groupBy((key, word) -> word)
                 .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as(kafkaStreamsConfigData.getWordCountStoreName()))
                 .toStream()
+                .filter((key, value) -> key != null && value != null)
                 .map(mapToAnalyticsModel())
                 .to(kafkaStreamsConfigData.getOutputTopicName(), Produced.with(Serdes.String(), serdeTwitterAnalyticsAvroModel));
     }

@@ -55,7 +55,7 @@ public class ElasticDocumentRestController {
     public @ResponseBody
     ResponseEntity<List<ElasticQueryServiceResponseModel>> getAllDocuments() {
         List<ElasticQueryServiceResponseModel> response = elasticQueryService.getAllDocuments();
-        LOG.info("Elasticsearch returned {} of documents", response.size());
+        LOG.info("Elasticsearch returned all {} documents", response.size());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
