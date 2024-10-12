@@ -56,6 +56,7 @@
 		<module>elastic-query-web-client</module>
         <module>kafka-streams-service</module>
         <module>twitter-analytics-service</module>
+        <module>discovery-service</module>
     </modules>
 
 	<dependencyManagement>
@@ -119,6 +120,16 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 				<version>${spring-cloud.version}</version>
 			</dependency>
 			<dependency>

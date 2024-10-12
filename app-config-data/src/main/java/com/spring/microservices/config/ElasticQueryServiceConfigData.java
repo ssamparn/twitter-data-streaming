@@ -12,6 +12,7 @@ public class ElasticQueryServiceConfigData {
     private String version;
     private WebClient webClient;
     private Query queryFromKafkaStateStore;
+    private Query queryFromAnalyticsDatabase;
 
     @Data
     public static class WebClient {

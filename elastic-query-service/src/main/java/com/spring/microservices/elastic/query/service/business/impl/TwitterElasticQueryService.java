@@ -76,6 +76,8 @@ public class TwitterElasticQueryService implements ElasticQueryService {
     private Long getWordCount(String text) {
         if (QueryType.KAFKA_STATE_STORE.getType().equals(elasticQueryServiceConfigData.getWebClient().getQueryType())) {
             return getFromKafkaStateStore(text).getWordCount();
+        } else if (QueryType.ANALYTICS_DATABASE.getType().equals(elasticQueryServiceConfigData.getWebClient().getQueryType())) {
+            return getFromAnalyticsDatabase(text).getWordCount();
         }
         return 0L;
     }
@@ -85,11 +87,16 @@ public class TwitterElasticQueryService implements ElasticQueryService {
         return retrieveResponseModel(text, queryFromKafkaStateStore);
     }
 
-    private ElasticQueryServiceWordCountResponseModel retrieveResponseModel(String text, ElasticQueryServiceConfigData.Query queryFromKafkaStateStore) {
+    private ElasticQueryServiceWordCountResponseModel getFromAnalyticsDatabase(String text) {
+        ElasticQueryServiceConfigData.Query queryFromAnalyticsDatabase = elasticQueryServiceConfigData.getQueryFromAnalyticsDatabase();
+        return retrieveResponseModel(text, queryFromAnalyticsDatabase);
+    }
+
+    private ElasticQueryServiceWordCountResponseModel retrieveResponseModel(String text, ElasticQueryServiceConfigData.Query query) {
         return webClientBuilder
                 .build()
-                .method(HttpMethod.valueOf(queryFromKafkaStateStore.getMethod()))
-                .uri(queryFromKafkaStateStore.getUri(), uriBuilder -> uriBuilder.build(text))
+                .method(HttpMethod.valueOf(query.getMethod()))
+                .uri(query.getUri(), uriBuilder -> uriBuilder.build(text))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(
