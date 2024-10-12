@@ -1,0 +1,102 @@
+server:
+  port: 9090
+
+logging:
+  level:
+    root: debug
+
+spring:
+  application:
+    name: api-gateway-service
+  profiles:
+    active: api_gateway
+  config:
+    import: 'optional:configserver:http://localhost:8888'
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+  cloud:
+    config:
+      name: api-gateway-service,config-client
+      uri: http://localhost:8888
+      username: spring_cloud_user
+#      password: springCloud_Pwd!
+      password: '{cipher}7a0d735158a760bab4ffb791ca55f52df9aa3a2b27b8411e968264d7726cc7597ea9ff5a57dae90fd68c9c09ba6a6970'
+      allow-override: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+        - id: elastic-query-service
+          uri: lb://elastic-query-service
+          predicates:
+            - Path=/elastic-query-service/**
+          filters:
+            - RewritePath=/elastic-query-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+#                key-resolver: "#{@authHeaderResolver}"
+            - name: CircuitBreaker
+              args:
+                name: queryServiceCircuitBreaker
+                fallbackUri: forward:/fallback/query-fallback
+        - id: twitter-analytics-service
+          uri: lb://twitter-analytics-service
+          predicates:
+            - Path=/twitter-analytics-service/**
+          filters:
+            - RewritePath=/twitter-analytics-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+#                key-resolver: "#{@authHeaderResolver}"
+            - name: CircuitBreaker
+              args:
+                name: analyticsServiceCircuitBreaker
+                fallbackUri: forward:/fallback/analytics-fallback
+        - id: kafka-streams-service
+          uri: lb://kafka-streams-service
+          predicates:
+            - Path=/kafka-streams-service/**
+          filters:
+            - RewritePath=/kafka-streams-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+#                key-resolver: "#{@authHeaderResolver}"
+            - name: CircuitBreaker
+              args:
+                name: streamsServiceCircuitBreaker
+                fallbackUri: forward:/fallback/streams-fallback
+
+encrypt:
+  key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/euraka/
+
+#----------------------------------------------------------------------------------------------------------------------
+# Uncomment below config properties to build locally. Otherwise, start local config server before building the project.
+#----------------------------------------------------------------------------------------------------------------------
+#gateway-service:
+#  timeout-ms: 3000
+#  failure-rate-threshold: 50
+#  slow-call-rate-threshold: 50
+#  slow-call-duration-threshold: 50
+#  permitted-num-of-calls-in-half-open-state: 10
+#  sliding-window-size: 10
+#  min-number-of-calls: 10
+#  wait-duration-in-open-state: 60000
+

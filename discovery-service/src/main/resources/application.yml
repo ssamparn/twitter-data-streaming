@@ -15,6 +15,11 @@ eureka:
     fetch-registry: false
   instance:
     appname: service-registry-cluster
+  server:
+    enable-self-preservation: false
+    expected-client-renewal-interval-seconds: 20
+    eviction-interval-timer-in-ms: 20000
+    peer-node-connect-timeout-ms: 20000
 
 logging:
   level:

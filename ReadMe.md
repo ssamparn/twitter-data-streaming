@@ -21,6 +21,13 @@ $ cd docker-compose
 $ docker compose -f common.yml -f postgresql.yml up
 ```
 
+#### Run Redis Database
+- From the root directory
+```bash
+$ cd docker-compose
+$ docker compose -f common.yml -f redis_cluster.yml up
+```
+
 | App           | Port                  | Username   | Password     |
 |---------------|-----------------------|------------|--------------|
 | Prometheus    | http://localhost:9090 |            |              |
@@ -53,3 +60,9 @@ Run below command to make it an executable file
 ```bash
 $ chmod +x check-config-server-started.sh
 ```
+
+To Do:
+
+1. Add rate limiting with redis
+2. Add OAuth2.0 security
+3. Docker compose support

@@ -1,7 +1,8 @@
 server:
   port: 8183
   servlet:
-    context-path: /elastic-query-service
+#    context-path: /elastic-query-service    # if requesting via localhost
+    context-path: /                          # if requesting via api gateway
 
 spring:
   application:
