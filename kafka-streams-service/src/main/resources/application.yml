@@ -26,6 +26,9 @@ spring:
 encrypt:
   key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
 
+log:
+  app-name: ${spring.application.name}
+
 springdoc:
   api-docs:
     path: /api-docs

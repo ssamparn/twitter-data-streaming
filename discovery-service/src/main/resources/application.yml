@@ -9,6 +9,9 @@ spring:
       ribbon:
         enabled: false
 
+log:
+  app-name: ${spring.application.name}
+
 eureka:
   client:
     register-with-eureka: false

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: configserver
+    name: config-server
   cloud:
     config:
       server:
@@ -22,6 +22,9 @@ spring:
 #      password: springCloud_Pwd!
 encrypt:
   key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
+
+log:
+  app-name: ${spring.application.name}
 
 logging:
   level:

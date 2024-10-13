@@ -22,6 +22,9 @@ spring:
 encrypt:
   key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
 
+log:
+  app-name: ${spring.application.name}
+
 #----------------------------------------------------------------------------------------------------------------------
 # Uncomment below config properties to build locally. Otherwise, start local config server before building the project.
 #----------------------------------------------------------------------------------------------------------------------

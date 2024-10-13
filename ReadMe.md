@@ -35,12 +35,14 @@ $ cd docker-compose
 $ docker compose -f common.yml -f monitoring.yml up
 ```
 
-| App / Features / Resources         | Host & Port                   | Username    | Password   |
-|------------------------------------|-------------------------------|-------------|------------|
-| View Prometheus Registered Targets | http://localhost:9090/targets |             |            |
-| Grafana Dashboard                  | http://localhost:3000         | `user`      | `password` |
-| Prometheus Server Url              | http://prometheus:9090        |             |            |
-| Postgresql                         | http://localhost:5432         | `postgres`  | `password` |
+| App / Features / Resources         | Host & Port                   | Username   | Password   |
+|------------------------------------|-------------------------------|------------|------------|
+| Postgresql                         | http://localhost:5432         | `postgres` | `password` |
+| View Prometheus Registered Targets | http://localhost:9090/targets |            |            |
+| Grafana Dashboard                  | http://localhost:3000         | `user`     | `password` |
+| Prometheus Server Url              | http://prometheus:9090        |            |            |
+| Kibana                             | http://localhost:5601         |            |            |
+
 
 - Inspect running containers
 ```bash

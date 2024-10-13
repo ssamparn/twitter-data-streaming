@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+
+    <springProperty name="log.app-name" source="log.app-name" />
+
     <property name="DEV_HOME" value="./discovery-service/logs"/>
-    <property name="APP_NAME" value="discovery-service"/>
+    <property name="APP_NAME" value="${log.app-name}"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -30,14 +33,29 @@
         </rollingPolicy>
     </appender>
 
+    <appender name="STASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DEV_HOME}/logstash/${APP_NAME}.log</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${DEV_HOME}/logstash/archived/${APP_NAME}-log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFileNamingAndTriggeringPolicy">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
     <logger name="com.spring.microservices" level="info" additivity="false">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STASH"/>
     </logger>
 
     <root level="info">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STASH"/>
     </root>
 
 </configuration>

@@ -26,6 +26,9 @@ spring:
 encrypt:
   key: APODNU3093r2rbjzxcn09u213asdhy08WRFH
 
+log:
+  appName: ${spring.application.name}
+
 logging:
   level:
     ROOT: INFO
