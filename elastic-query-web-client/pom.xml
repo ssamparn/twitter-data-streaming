@@ -59,5 +59,9 @@
             <groupId>com.spring.microservices</groupId>
             <artifactId>app-config-data</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>mdc-interceptor</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -88,6 +88,10 @@
             <groupId>com.spring.microservices</groupId>
             <artifactId>kafka-admin</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.spring.microservices</groupId>
+            <artifactId>mdc-interceptor</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
