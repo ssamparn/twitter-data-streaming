@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 9092
 
 logging:
   level:
@@ -86,6 +86,24 @@ eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/euraka/
+  instance:
+    lease-expiration-duration-in-seconds: 50
+    lease-renewal-interval-in-seconds: 20
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure.include: health, prometheus, gateway
+      path-mapping:
+        prometheus: metrics
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
+    gateway:
+      enabled: true
 
 #----------------------------------------------------------------------------------------------------------------------
 # Uncomment below config properties to build locally. Otherwise, start local config server before building the project.

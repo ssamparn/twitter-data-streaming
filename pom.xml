@@ -42,6 +42,7 @@
 		<kafka-streams-avro-serde.version>7.7.1</kafka-streams-avro-serde.version>
 		<springdoc-openapi-starter-webmvc-ui.version>2.6.0</springdoc-openapi-starter-webmvc-ui.version>
 		<spring-cloud-starter-circuitbreaker-reactor-resilience4j.version>3.1.2</spring-cloud-starter-circuitbreaker-reactor-resilience4j.version>
+		<micrometer-registry-prometheus.version>1.13.5</micrometer-registry-prometheus.version>
 	</properties>
 
 	<modules>
@@ -223,6 +224,17 @@
 				<groupId>org.elasticsearch</groupId>
 				<artifactId>elasticsearch</artifactId>
 				<version>${elasticsearch.version}</version>
+			</dependency>
+            <!--MONITORING, OBSERVABILITY & VISUALISATION-->
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-registry-prometheus</artifactId>
+				<version>${micrometer-registry-prometheus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 			<!--LOCAL-->
 			<dependency>

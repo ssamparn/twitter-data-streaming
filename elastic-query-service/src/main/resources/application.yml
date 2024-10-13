@@ -48,6 +48,22 @@ eureka:
     lease-expiration-duration-in-seconds: 5
     lease-renewal-interval-in-seconds: 2
 
+management:
+  health:
+    elasticsearch:
+      enabled: false
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure.include: health, prometheus
+      path-mapping:
+        prometheus: metrics
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
+
 #----------------------------------------------------------------------------------------------------------------------
 # Uncomment below config properties to build locally. Otherwise, start local config server before building the project.
 #----------------------------------------------------------------------------------------------------------------------

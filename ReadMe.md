@@ -28,11 +28,19 @@ $ cd docker-compose
 $ docker compose -f common.yml -f redis_cluster.yml up
 ```
 
-| App           | Port                  | Username   | Password     |
-|---------------|-----------------------|------------|--------------|
-| Prometheus    | http://localhost:9090 |            |              |
-| Grafana       | http://localhost:3000 | `admin`    | `grafana`    |
-| Postgresql    | http://localhost:5432 | `postgres` | `password`   |
+#### Run Prometheus & Grafana
+- From the root directory
+```bash
+$ cd docker-compose
+$ docker compose -f common.yml -f monitoring.yml up
+```
+
+| App / Features / Resources         | Host & Port                   | Username    | Password   |
+|------------------------------------|-------------------------------|-------------|------------|
+| View Prometheus Registered Targets | http://localhost:9090/targets |             |            |
+| Grafana Dashboard                  | http://localhost:3000         | `user`      | `password` |
+| Prometheus Server Url              | http://prometheus:9090        |             |            |
+| Postgresql                         | http://localhost:5432         | `postgres`  | `password` |
 
 - Inspect running containers
 ```bash

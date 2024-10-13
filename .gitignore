@@ -36,3 +36,5 @@ build/
 ### Logs ###
 docker-compose/docker-logs
 docker-compose/data
+docker-compose/grafana
+docker-compose/prometheus
